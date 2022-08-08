@@ -8,7 +8,7 @@ module.exports = attacher
 function attacher(options) {
   var settings = options || {}
   var theme = settings.theme || 'nord'
-  var languages = setting.langs || []
+  var languages = settings.langs || []
   var useBackground =
     typeof settings.useBackground === 'undefined'
       ? true
