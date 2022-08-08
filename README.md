@@ -9,7 +9,7 @@ This plugin was based upon [**rehype-highlight**][rehype-highlight].
 [npm][]:
 
 ```bash
-npm install git@github.com:meko3/rehype-shiki.git
+npm install meko3/rehype-shiki.git
 ```
 
 ## Usage
