@@ -19,7 +19,7 @@ function attacher(options) {
     shikiTheme = shiki.getTheme(theme)
   } catch (_) {
     try {
-      shikiTheme = shiki.loadTheme("themes/" + theme)
+      shikiTheme = shiki.loadTheme("themes/" + theme + ".json")
     } catch (_) {
       throw new Error('Unable to load theme: ' + theme)
     }
