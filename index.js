@@ -8,7 +8,7 @@ module.exports = attacher
 function attacher(options) {
   var settings = options || {}
   var theme = settings.theme || 'nord'
-  var languages = [...shiki.langs, ...shiki.BUNDLED_LANGUAGES] || shiki.BUNDLED_LANGUAGES
+  var languages = [...shiki.BUNDLED_LANGUAGES, ...settings.langs] || shiki.BUNDLED_LANGUAGES
   var useBackground =
     typeof settings.useBackground === 'undefined'
       ? true
