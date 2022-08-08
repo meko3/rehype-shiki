@@ -8,7 +8,6 @@ module.exports = attacher
 function attacher(options) {
   var settings = options || {}
   var theme = settings.theme || 'nord'
-  var languages = [...shiki.BUNDLED_LANGUAGES, ...settings.langs] || shiki.BUNDLED_LANGUAGES
   var useBackground =
     typeof settings.useBackground === 'undefined'
       ? true
@@ -28,7 +27,6 @@ function attacher(options) {
     await shikiTheme.then(async (th) => {
       highlighter = await shiki.getHighlighter({
         theme: th.name,
-        langs: languages
       })
     });
     visit(tree, 'element', visitor)
