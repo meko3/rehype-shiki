@@ -50,12 +50,13 @@ function attacher(options) {
         addStyle(node, 'color: ' + th.fg)
         return
       }
+      
+      const tokens = highlighter.codeToThemedTokens(hastToString(node), lang)
+      const tree = tokensToHast(tokens)
+  
+      node.children = tree
     });
 
-    const tokens = highlighter.codeToThemedTokens(hastToString(node), lang)
-    const tree = tokensToHast(tokens)
-
-    node.children = tree
   }
 }
 
