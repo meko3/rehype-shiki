@@ -1,6 +1,6 @@
 {
-  "name": "rehype-shiki",
-  "version": "0.0.9",
+  "name": "rehype-shiki-meko",
+  "version": "0.0.1",
   "description": "rehype plugin to highlight code blocks with shiki",
   "main": "index.js",
   "files": [
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rsclarke/rehype-shiki.git"
+    "url": "git+https://github.com/meko3/rehype-shiki.git"
   },
   "keywords": [
     "rehype",
