@@ -1,10 +1,5 @@
 const shiki = require('shiki')
 const visit = require('unist-util-visit')
-const {
-  commonLangIds,
-  commonLangAliases,
-  otherLangIds
-} = require('shiki-languages')
 const hastToString = require('hast-util-to-string')
 const u = require('unist-builder')
 
