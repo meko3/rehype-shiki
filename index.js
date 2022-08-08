@@ -16,13 +16,9 @@ function attacher(options) {
   var highlighter
 
   try {
-    shikiTheme = shiki.getTheme(theme)
+    shikiTheme = shiki.loadTheme("themes/" + theme + ".json")
   } catch (_) {
-    try {
-      shikiTheme = shiki.loadTheme("themes/" + theme + ".json")
-    } catch (_) {
-      throw new Error('Unable to load theme: ' + theme)
-    }
+    throw new Error('Unable to load theme: ' + theme)
   }
 
   return transformer
@@ -40,7 +36,7 @@ function attacher(options) {
     }
 
     if (useBackground) {
-      addStyle(parent, 'background: ' + shikiTheme.bg)
+      addStyle(parent, 'background: ' + shikiTheme.colors.dropdown.background)
     }
 
     const lang = codeLanguage(node)
