@@ -25,6 +25,7 @@ function attacher(options) {
   return transformer
 
   async function transformer(tree) {
+    print(shikiTheme)
     highlighter = await shiki.getHighlighter({
       theme: shikiTheme,
     })
@@ -37,7 +38,7 @@ function attacher(options) {
     }
 
     if (useBackground) {
-      addStyle(parent, 'background: ' + shikiTheme.settings.background ? shikiTheme.settings.background : nordTheme.settings.background)
+      addStyle(parent, 'background: ' + shikiTheme.settings?.background ? shikiTheme.settings?.background : nordTheme.settings.background)
     }
 
     const lang = codeLanguage(node)
