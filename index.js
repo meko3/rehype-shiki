@@ -29,8 +29,7 @@ function attacher(options) {
 
   async function transformer(tree) {
     highlighter = await shiki.getHighlighter({
-      theme: shikiTheme,
-      themes: shiki.themes
+      theme: "themes" + shikiTheme,
     })
     visit(tree, 'element', visitor)
   }
