@@ -25,9 +25,11 @@ function attacher(options) {
   return transformer
 
   async function transformer(tree) {
-    highlighter = await shiki.getHighlighter({
-      theme: shikiTheme,
-    })
+    shikiTheme.then((th) => {
+      highlighter = await shiki.getHighlighter({
+        theme: th.name,
+      })
+    });
     visit(tree, 'element', visitor)
   }
 
@@ -36,18 +38,19 @@ function attacher(options) {
       return
     }
 
-    if (useBackground) {
-      console.log(shikiTheme["bg"])
-      addStyle(parent, 'background: ' + shikiTheme.tokensColor.settings.background ? shikiTheme.tokensColor.settings.background : nordTheme.tokensColor.settings.background)
-    }
+    shikiTheme.then((th) => {
+      if (useBackground) {
+        addStyle(parent, 'background: ' + th.bg)
+      }
 
-    const lang = codeLanguage(node)
-
-    if (!lang) {
-      // Unknown language, fall back to a foreground colour
-      addStyle(node, 'color: ' + shikiTheme.tokensColor.settings.foreground)
-      return
-    }
+      const lang = codeLanguage(node)
+  
+      if (!lang) {
+        // Unknown language, fall back to a foreground colour
+        addStyle(node, 'color: ' + th.fg)
+        return
+      }
+    });
 
     const tokens = highlighter.codeToThemedTokens(hastToString(node), lang)
     const tree = tokensToHast(tokens)
