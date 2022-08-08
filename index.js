@@ -18,11 +18,11 @@ function attacher(options) {
   try {
     shikiTheme = shiki.getTheme(theme)
   } catch (_) {
-    // try {
-    //   shikiTheme = shiki.loadTheme(theme)
-    // } catch (_) {
-    //   throw new Error('Unable to load theme: ' + theme)
-    // }
+    try {
+      shikiTheme = shiki.fetchTheme(theme)
+    } catch (_) {
+      throw new Error('Unable to load theme: ' + theme)
+    }
   }
 
   return transformer
