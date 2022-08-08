@@ -17,7 +17,6 @@ function attacher(options) {
 
   try {
     shikiTheme = shiki.loadTheme("themes/" + theme + ".json")
-    nordTheme = shiki.loadTheme("themes/nord.json")
   } catch (_) {
     throw new Error('Unable to load theme: ' + theme)
   }
@@ -28,6 +27,7 @@ function attacher(options) {
     await shikiTheme.then(async (th) => {
       highlighter = await shiki.getHighlighter({
         theme: th.name,
+        langs: shiki.langs
       })
     });
     visit(tree, 'element', visitor)
