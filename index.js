@@ -15,21 +15,21 @@ function attacher(options) {
   var shikiTheme
   var highlighter
 
-  try {
-    shikiTheme = shiki.getTheme(theme)
-  } catch (_) {
-    try {
-      shikiTheme = shiki.loadTheme(theme)
-    } catch (_) {
-      throw new Error('Unable to load theme: ' + theme)
-    }
-  }
+  // try {
+  //   shikiTheme = shiki.getTheme(theme)
+  // } catch (_) {
+  //   try {
+  //     shikiTheme = shiki.loadTheme(theme)
+  //   } catch (_) {
+  //     throw new Error('Unable to load theme: ' + theme)
+  //   }
+  // }
 
   return transformer
 
   async function transformer(tree) {
     highlighter = await shiki.getHighlighter({
-      theme: "themes" + shikiTheme,
+      theme: theme,
     })
     visit(tree, 'element', visitor)
   }
