@@ -8,8 +8,6 @@ const {
 const hastToString = require('hast-util-to-string')
 const u = require('unist-builder')
 
-const languages = [...commonLangIds, ...commonLangAliases, ...otherLangIds]
-
 module.exports = attacher
 
 function attacher(options) {
@@ -37,7 +35,6 @@ function attacher(options) {
   async function transformer(tree) {
     highlighter = await shiki.getHighlighter({
       theme: shikiTheme,
-      langs: languages
     })
     visit(tree, 'element', visitor)
   }
