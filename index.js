@@ -36,7 +36,7 @@ function attacher(options) {
     }
 
     if (useBackground) {
-      addStyle(parent, 'background: ' + shikiTheme.colors.dropdown.background)
+      addStyle(parent, 'background: ' + shikiTheme.colors.editor.background)
     }
 
     const lang = codeLanguage(node)
