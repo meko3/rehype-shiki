@@ -24,8 +24,8 @@ function attacher(options) {
 
   return transformer
 
-  function transformer(tree) {
-    shikiTheme.then(async (th) => {
+  async function transformer(tree) {
+    await shikiTheme.then(async (th) => {
       highlighter = await shiki.getHighlighter({
         theme: th.name,
       })
@@ -33,12 +33,12 @@ function attacher(options) {
     visit(tree, 'element', visitor)
   }
 
-  function visitor(node, index, parent) {
+  async function visitor(node, index, parent) {
     if (!parent || parent.tagName !== 'pre' || node.tagName !== 'code') {
       return
     }
 
-    shikiTheme.then((th) => {
+    await shikiTheme.then((th) => {
       if (useBackground) {
         addStyle(parent, 'background: ' + th.bg)
       }
@@ -50,7 +50,7 @@ function attacher(options) {
         addStyle(node, 'color: ' + th.fg)
         return
       }
-      
+
       const tokens = highlighter.codeToThemedTokens(hastToString(node), lang)
       const tree = tokensToHast(tokens)
   
