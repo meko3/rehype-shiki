@@ -26,8 +26,7 @@ function attacher(options) {
   async function transformer(tree) {
     await shikiTheme.then(async (th) => {
       highlighter = await shiki.getHighlighter({
-        theme: th.name,
-        langs: shiki.langs
+        theme: th.name
       })
     });
     visit(tree, 'element', visitor)
@@ -51,12 +50,12 @@ function attacher(options) {
         return
       }
 
-      const tokens = highlighter.codeToThemedTokens(hastToString(node), lang)
-      const tree = tokensToHast(tokens)
-  
-      node.children = tree
     });
+    
+    const tokens = highlighter.codeToThemedTokens(hastToString(node), lang)
+    const tree = tokensToHast(tokens)
 
+    node.children = tree
   }
 }
 
