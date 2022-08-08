@@ -25,7 +25,6 @@ function attacher(options) {
   return transformer
 
   async function transformer(tree) {
-    console.log(shikiTheme)
     highlighter = await shiki.getHighlighter({
       theme: shikiTheme,
     })
@@ -38,14 +37,14 @@ function attacher(options) {
     }
 
     if (useBackground) {
-      addStyle(parent, 'background: ' + shikiTheme.settings?.background ? shikiTheme.settings?.background : nordTheme.settings.background)
+      addStyle(parent, 'background: ' + shikiTheme.tokensColor.settings.background ? shikiTheme.tokensColor.settings.background : nordTheme.tokensColor.settings.background)
     }
 
     const lang = codeLanguage(node)
 
     if (!lang) {
       // Unknown language, fall back to a foreground colour
-      addStyle(node, 'color: ' + shikiTheme.settings.foreground)
+      addStyle(node, 'color: ' + shikiTheme.tokensColor.settings.foreground)
       return
     }
 
