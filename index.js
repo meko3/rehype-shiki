@@ -37,6 +37,7 @@ function attacher(options) {
     }
 
     if (useBackground) {
+      print(shikiTheme)
       addStyle(parent, 'background: ' + shikiTheme.tokensColor.settings.background ? shikiTheme.tokensColor.settings.background : nordTheme.tokensColor.settings.background)
     }
 
