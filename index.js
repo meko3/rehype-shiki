@@ -17,6 +17,7 @@ function attacher(options) {
 
   try {
     shikiTheme = shiki.loadTheme("themes/" + theme + ".json")
+    nordTheme = shiki.loadTheme("themes/nord.json")
   } catch (_) {
     throw new Error('Unable to load theme: ' + theme)
   }
@@ -36,7 +37,7 @@ function attacher(options) {
     }
 
     if (useBackground) {
-      addStyle(parent, 'background: ' + shikiTheme.colors.editor.background)
+      addStyle(parent, 'background: ' + shikiTheme.settings.background ? shikiTheme.settings.background : nordTheme.settings.background)
     }
 
     const lang = codeLanguage(node)
