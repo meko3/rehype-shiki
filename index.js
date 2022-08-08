@@ -8,6 +8,7 @@ module.exports = attacher
 function attacher(options) {
   var settings = options || {}
   var theme = settings.theme || 'nord'
+  var languages = setting.langs || []
   var useBackground =
     typeof settings.useBackground === 'undefined'
       ? true
@@ -27,7 +28,7 @@ function attacher(options) {
     await shikiTheme.then(async (th) => {
       highlighter = await shiki.getHighlighter({
         theme: th.name,
-        langs: ["kotlin"]
+        langs: languages
       })
     });
     visit(tree, 'element', visitor)
@@ -51,12 +52,12 @@ function attacher(options) {
         return
       }
 
+      const tokens = highlighter.codeToThemedTokens(hastToString(node), lang)
+      const tree = tokensToHast(tokens)
+  
+      node.children = tree
     });
     
-    const tokens = highlighter.codeToThemedTokens(hastToString(node), lang)
-    const tree = tokensToHast(tokens)
-
-    node.children = tree
   }
 }
 
